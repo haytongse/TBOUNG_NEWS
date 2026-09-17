@@ -20,7 +20,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen]   = useState(false)
   const [search, setSearch]       = useState('')
   const [breaking, setBreaking]   = useState<Article[]>([])
-  const [categories, setCategories] = useState<{ id: number; name: string; name_kh: string }[]>([])
+  const [categories, setCategories] = useState<{ id: number; name: string; name_kh: string; slug: string }[]>([])
   const navigate  = useNavigate()
   const location  = useLocation()
 
@@ -36,7 +36,7 @@ export default function Header() {
     api.get<{ data: Article[] }>('/public/articles?status=published&breaking=true&limit=10')
       .then((r) => setBreaking(r.data.data))
       .catch(() => {})
-    api.get<{ id: number; name: string; name_kh: string }[]>('/public/categories')
+    api.get<{ id: number; name: string; name_kh: string; slug: string }[]>('/public/categories')
       .then((r) => setCategories(r.data))
       .catch(() => {})
   }, [])
