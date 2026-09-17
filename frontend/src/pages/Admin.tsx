@@ -215,9 +215,9 @@ const adminUi = {
 
 export default function Admin() {
   const { user, logout } = useAuth()
-  const [adminLang, setAdminLang] = useState<'kh' | 'en'>(() => (localStorage.getItem('admin_lang') as 'kh' | 'en') ?? 'kh')
+  const [adminLang, setAdminLang] = useState<'kh' | 'en'>('kh')
   const al = adminUi[adminLang]
-  const toggleLang = (l: 'kh' | 'en') => { setAdminLang(l); localStorage.setItem('admin_lang', l) }
+  const toggleLang = (l: 'kh' | 'en') => { setAdminLang(l) }
 
   const [tab, setTab]               = useState<Tab>('articles')
   const [posts, setPosts]           = useState<Article[]>([])
