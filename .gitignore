@@ -10,9 +10,6 @@ build/
 .env.local
 .env.*.local
 
-# Uploads (user-generated files)
-backend/uploads/
-
 # Logs
 *.log
 npm-debug.log*
