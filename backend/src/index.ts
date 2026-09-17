@@ -10,7 +10,7 @@ import { existsSync } from 'fs'
 import { pool, runMigrations } from './db.js'
 
 const JWT_SECRET = 'news-police-jwt-secret-2026'
-const PORT       = 3333
+const PORT       = 3337
 
 const app = new Hono()
 app.use('*', logger())
