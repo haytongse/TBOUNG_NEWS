@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import mysql from 'mysql2/promise'
 import { readFileSync, readdirSync } from 'fs'
 import { join, dirname } from 'path'
@@ -7,11 +8,11 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const MIG_DIR   = join(__dirname, '../migrations')
 
 export const pool = mysql.createPool({
-  host:               'localhost',
-  port:               3308,
-  user:               'root',
-  password:           'password',
-  database:           'db_news',
+  host:               process.env.DB_HOST     ?? 'localhost',
+  port:               Number(process.env.DB_PORT) || 3306,
+  user:               process.env.DB_USER     ?? 'root',
+  password:           process.env.DB_PASSWORD ?? '',
+  database:           process.env.DB_DATABASE ?? 'db_news',
   charset:            'utf8mb4',
   multipleStatements: true,
   waitForConnections: true,
