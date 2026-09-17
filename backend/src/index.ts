@@ -17,6 +17,12 @@ app.use('*', logger())
 app.use('*', cors({ origin: ['http://localhost:5173'], credentials: true }))
 app.use('/uploads/*', serveStatic({ root: './' }))
 
+// ── Test route ───────────────────────────────────────────────────────────────
+
+app.get('/api/test', (c) => {
+  return c.json({ status: 'ok', message: 'API is working!', timestamp: new Date().toISOString() })
+})
+
 // ── Auth middleware ───────────────────────────────────────────────────────────
 
 async function authMiddleware(c: any, next: any) {
